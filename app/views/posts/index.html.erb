@@ -1,0 +1,25 @@
+<h1>ブログTOP</h1>
+<div>
+  <% if user_signed_in? %>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to '新規登録', new_user_registration_path %>
+    <%= link_to 'ログイン', new_user_session_path %>
+  <% end %>
+</div>
+<div>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to "新規投稿", new_admin_post_path %>
+  <% end %>
+</div>
+
+<div class="posts">
+  <ul>
+    <% @posts.each do |f| %>
+      <li>
+        <td><%= f.text %></td>
+        <td><%= f.created_at %></td>
+      </li>
+    <% end %>
+  </ul>
+<div>

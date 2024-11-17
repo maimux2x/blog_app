@@ -1,0 +1,7 @@
+<h1>新規投稿作成</h1>
+
+<%= form_with model: @post, url: admin_posts_path, local: true do |f| %>
+  <%= f.text_area :text %>
+  <%= f.submit "投稿する" %>
+<% end %>
+
